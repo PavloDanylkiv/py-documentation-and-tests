@@ -16,10 +16,6 @@ MOVIE_URL = reverse("cinema:movie-list")
 MOVIE_SESSION_URL = reverse("cinema:moviesession-list")
 
 
-def detail_ulr(movie_id):
-    return reverse("cinema:movie-detail", args=(movie_id,))
-
-
 def sample_movie(**params):
     defaults = {
         "title": "Sample movie",
@@ -338,7 +334,7 @@ class AdminMovieApiTest(TestCase):
 
     def test_delete_movie_not_allowed(self):
         movie = sample_movie()
-        ulr = detail_ulr(movie.id)
+        ulr = detail_url(movie.id)
 
         response = self.client.delete(ulr)
 
